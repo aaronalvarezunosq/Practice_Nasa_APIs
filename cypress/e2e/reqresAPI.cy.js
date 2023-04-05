@@ -38,7 +38,7 @@ cy.request({method :'POST',
                         })
             })
 
-    it('GET Request reqri',() =>{
+    it.only('GET Request reqri',() =>{
     //This makes a GET request to the reqri API to obtain the user with id=7
         cy.request({method :'GET',
                     url:'https://reqres.in/api/users/7'
@@ -50,6 +50,7 @@ cy.request({method :'POST',
                         expect(response.body.data).to.have.property('last_name','Lawson');
                         expect(response.body.data).to.have.property('avatar','https://reqres.in/img/faces/7-image.jpg');
                         expect(response.body).to.have.property('support');
+                        cy.log(response.body.data.email);
                         })
                     })        
 })

@@ -14,9 +14,14 @@ cy.request({method :'GET',
             expect(response.status).to.equal(200); //validare status code 200
             expect(response.body[0]).to.have.property('link'); //validate that first element in body response array has property "link"
             expect(response.body[0]).to.have.property('instruments');//other property validations
+            expect(response.body[0].instruments[0]).to.have.property('displayName')
             expect(response.body[0]).to.have.property('beginTime');
             expect(response.body[0]).to.have.property('peakTime');
             expect(response.body[0]).to.have.property('endTime');
+            expect(response.body[0]).to.have.property('linkedEvents');
+            expect(response.body[0].linkedEvents[0]).to.have.property('activityID');
+            cy.log('The first element displayName is: '+response.body[0].instruments[0].displayName)
+            cy.log('The first element activityID is: '+response.body[0].linkedEvents[0].activityID)
                 })
     })
 })
